@@ -28,7 +28,8 @@ namespace Waling.Pages.Program
         {
             IConfigurationSection publicKnowledge = await Task.Run(() => _config.GetSection("PublicKnowledge"));
             string site = publicKnowledge.GetValue<string>("ApplicationName") ?? "default name";
-            return Redirect($"/Index?application={site}");
+            _logger.LogInformation("Projected date is {projected}", Projected);
+            return Redirect($"/Index?application={site}&projected={Projected}");
         }
     }
 }

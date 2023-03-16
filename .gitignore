@@ -475,3 +475,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# specifically don't commit these 
+Waling/Properties/ServiceDependencies/**/*

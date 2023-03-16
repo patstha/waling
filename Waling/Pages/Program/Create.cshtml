@@ -1,0 +1,15 @@
+﻿@page
+@model Waling.Pages.Program.CreateModel
+@{
+    ViewData["Title"] = "Create a new program";
+}
+
+
+<form>
+    <label class="form-label required" for="Projected">Projected Dock Date</label>
+    <span asp-validation-for="Projected" class="text-danger"></span>
+    <br />
+    <input required type="date" class="form-control w-50" asp-for="Projected" value="@DateTime.UtcNow.Date">
+    <br />
+    <button class="primary mt-2 mb-2" type="submit" onclick="console.info('hello, world!')">Submit</button>
+</form>

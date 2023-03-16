@@ -10,7 +10,7 @@ namespace Waling.Pages.Program
         [BindProperty, DataType(DataType.Date)]
         [Required]
         [DisplayName("Projected Date")]
-        public DateTime Projected { get; set; }
+        public DateOnly Projected { get; set; }
 
         private readonly ILogger<CreateModel> _logger;
         private readonly IConfiguration _config;

@@ -6,4 +6,14 @@ function sayHello(name: string) {
     }
 }
 
-sayHello("test")
+function sayGoodbye(name: string) {
+    if (name && name.trim().length > 0) {
+        console.info(`Goodbye, {name}`);
+    } else {
+        console.info("Goodbye, cruel world!");
+    }
+}
+
+
+sayHello("qa guy")
+sayGoodbye("qa guy")

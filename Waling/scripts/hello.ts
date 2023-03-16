@@ -15,5 +15,5 @@ function sayGoodbye(name: string) {
 }
 
 
-sayHello("qa guy")
-sayGoodbye("qa guy")
+sayHello("developer")
+sayGoodbye("developer")

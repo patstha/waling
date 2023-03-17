@@ -15,5 +15,5 @@ function sayGoodbye(name: string) {
 }
 
 
-sayHello("developer")
-sayGoodbye("developer")
+sayHello("Fedora Linux")
+sayGoodbye("Fedora Linux")

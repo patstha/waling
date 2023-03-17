@@ -22,3 +22,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#pratikchhya {
+  border: 1px solid red;
+  background: blue;
+  color: var(--bs-light)
+}

@@ -9,8 +9,14 @@ namespace Waling.Pages.Program
     {
         [BindProperty, DataType(DataType.Date)]
         [Required]
-        [DisplayName("Projected Date")]
-        public DateOnly Projected { get; set; }
+        [DisplayName("Projected Date New")]
+        public DateOnly ProjectedNew { get; set; }
+
+        [BindProperty, DataType(DataType.Date)]
+        [Required]
+        [DisplayName("Projected Date Old")]
+        public DateTime ProjectedOld { get; set; }
+
 
         private readonly ILogger<CreateModel> _logger;
         private readonly IConfiguration _config;
@@ -28,8 +34,9 @@ namespace Waling.Pages.Program
         {
             IConfigurationSection publicKnowledge = await Task.Run(() => _config.GetSection("PublicKnowledge"));
             string site = publicKnowledge.GetValue<string>("ApplicationName") ?? "default name";
-            _logger.LogInformation("Projected date is {projected}", Projected);
-            return Redirect($"/Index?application={site}&projected={Projected}");
+            _logger.LogInformation("Projected date old is {projectedold}", ProjectedOld);
+            _logger.LogInformation("Projected date new is {projectednew}", ProjectedNew);
+            return Redirect($"/Index?application={site}&projectedold={ProjectedOld}&projectednew={ProjectedNew}");
         }
     }
 }

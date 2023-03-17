@@ -6,10 +6,15 @@
 
 
 <form asp-action="Create" method="post">
-    <label class="form-label required" for="Projected">Projected Dock Date</label>
-    <span asp-validation-for="Projected" class="text-danger"></span>
+    <label class="form-label required" for="ProjectedOld">Projected Date Old</label>
+    <span asp-validation-for="ProjectedOld" class="text-danger"></span>
     <br />
-    <input required type="date" class="form-control w-50" asp-for="Projected" value="@DateTime.UtcNow.Date">
+    <input required type="date" class="form-control w-50" asp-for="ProjectedOld" value="@DateTime.UtcNow.Date">
+    <br />
+    <label class="form-label required" for="ProjectedNew">Projected Date New</label>
+    <span asp-validation-for="ProjectedNew" class="text-danger"></span>
+    <br />
+    <input required type="date" class="form-control w-50" asp-for="ProjectedNew" value="@DateTime.UtcNow.Date">
     <br />
     <button class="primary mt-2 mb-2" type="submit" onclick="sayHello('avocado')'">Submit</button>
 </form>

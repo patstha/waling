@@ -15,5 +15,9 @@ function sayGoodbye(name: string) {
 }
 
 
-sayHello("Fedora Linux")
-sayGoodbye("Fedora Linux")
+sayHello("Windows 10")
+sayGoodbye("Windows 10")
+
+function onSubmitPoll() {
+    alert("Congratulation, you have submitted the poll!");
+}

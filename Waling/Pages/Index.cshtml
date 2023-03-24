@@ -9,41 +9,8 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<article>
-    <h2>
-        What's up with Woot!
-    </h2>
-    <h3>
-        We're more than just deals, you know...
-    </h3>
+<component type="typeof(Waling.Pages.Poll)" render-mode="Server" />
 
-    <p>Woot Asks</p>
-    <form>
-        <fieldset>
-            <legend>Best cheese for grilled cheese?</legend>
-
-            <input type="radio" id="american" name="cheese" value="american">
-            <label for="american">American</label>
-            <br>
-
-            <input type="radio" id="cheddar" name="cheese" value="cheese">
-            <label for="cheddar">Cheddar</label>
-            <br>
-
-            <input type="radio" id="jack" name="cheese" value="M" />
-            <label for="jack">Jack</label>
-            <br>
-
-            <input type="radio" id="mozzarella" name="cheese" value="M" />
-            <label for="mozzarella">Mozzarella</label>
-            <br>
-
-            <input type="radio" id="something-else" name="cheese" value="M" />
-            <label for="something-else">Something else (tell us)</label>
-        </fieldset>
-
-        <button type="submit">vote</button>
-        <button type="button">Discuss the poll</button>
-    </form>
-
-</article>
+@section Scripts {
+    <script src="_framework/blazor.server.js"></script>
+}

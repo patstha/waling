@@ -19,5 +19,11 @@ sayHello("Windows 10")
 sayGoodbye("Windows 10")
 
 function onSubmitPoll() {
+    const poll = document.getElementById("poll");
+    const favoriteCheese = document.getElementById('favorite-cheese');
+    console.info({ poll });
+    console.info({ favoriteCheese });
+    debugger;
     alert("Congratulation, you have submitted the poll!");
+
 }

@@ -1,6 +1,7 @@
 using Bogus;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Waling.Models;
@@ -20,6 +21,12 @@ public class CreateModel : PageModel
     [DisplayName("Projected Date Old")]
     public DateTime ProjectedOld { get; set; }
 
+    [BindProperty]
+    [Required]
+    [DisplayName("Waling Person")]
+    public string WalingPerson { get; set; }
+
+    public IEnumerable<SelectListItem> WalingPersons {  get; set; }
 
     private readonly ILogger<CreateModel> _logger;
     private readonly IConfiguration _config;
@@ -34,6 +41,11 @@ public class CreateModel : PageModel
     public async Task OnGetAsync()
     {
         People = await GetUsers();
+        WalingPersons = People.Select(po => new SelectListItem()
+        {
+            Text = po.FullName,
+            Value = po.Email
+        });
     }
 
     public async Task<IActionResult> OnPostAsync()
@@ -50,7 +62,7 @@ public class CreateModel : PageModel
         List<WalingPerson> persons = new();
         await Task.Run(async () =>
         {
-            for (int i = 1; i < 10; i++)
+            for (int i = 1; i < 1000; i++)
             {
                 WalingPerson person = await GetWalingPerson(i);
                 persons.Add(person);
@@ -61,17 +73,33 @@ public class CreateModel : PageModel
 
     private async Task<WalingPerson> GetWalingPerson(int increment)
     {
-        WalingPerson user = new();
+        WalingPerson user = new(0, "");
         await Task.Run(() =>
         {
-            Faker<WalingPerson> testUsers = new Faker<WalingPerson>()
+            var testUsers = new Faker<WalingPerson>()
             //Optional: Call for objects that have complex initialization
-            .CustomInstantiator(f => new WalingPerson())
+            .CustomInstantiator(f => new WalingPerson(increment, f.Random.Replace("###-##-####")))
+
+            //Use an enum outside scope.
+            .RuleFor(u => u.Gender, f => f.PickRandom<Gender>())
 
             //Basic rules using built-in generators
-            .RuleFor(u => u.LegalName, (f, u) => $"{f.Name.FirstName(Gender.Male)} {f.Name.LastName(Gender.Male)}")
-            .RuleFor(u => u.PrimaryEmail, (f, u) => f.Internet.Email(uniqueSuffix: increment.ToString()));
-            WalingPerson user = testUsers.Generate();
+            .RuleFor(u => u.FirstName, (f, u) => f.Name.FirstName(u.Gender))
+            .RuleFor(u => u.LastName, (f, u) => f.Name.LastName(u.Gender))
+            .RuleFor(u => u.Avatar, f => f.Internet.Avatar())
+            .RuleFor(u => u.UserName, (f, u) => f.Internet.UserName(u.FirstName, u.LastName))
+            .RuleFor(u => u.Email, (f, u) => f.Internet.Email(u.FirstName, u.LastName))
+            .RuleFor(u => u.SomethingUnique, f => $"Value {f.UniqueIndex}")
+
+            //Compound property with context, use the first/last name properties
+            .RuleFor(u => u.FullName, (f, u) => u.FirstName + " " + u.LastName)
+            //Optional: After all rules are applied finish with the following action
+            .FinishWith((f, u) =>
+            {
+                Console.WriteLine("User Created! Id={0}", u.Id);
+            });
+
+            user = testUsers.Generate();
         });
         return user;
     }

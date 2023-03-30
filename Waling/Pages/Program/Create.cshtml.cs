@@ -50,12 +50,12 @@ public class CreateModel : PageModel
         People = await GetUsers();
         WalingPersons = People.Select(po => new SelectListItem()
         {
-            Text = po.FullName,
+            Text = $"{po.FullName} - {po.Email}",
             Value = po.Email
         });
         ModernWalingPersons = People.Select(po => new SelectListItem()
         {
-            Text = po.FullName,
+            Text = $"{po.FullName} - {po.Email}",
             Value = po.Email
         });
     }
@@ -74,13 +74,13 @@ public class CreateModel : PageModel
         List<WalingPerson> persons = new();
         await Task.Run(async () =>
         {
-            for (int i = 1; i < 1000; i++)
+            for (int i = 1; i < 50000; i++)
             {
                 WalingPerson person = await GetWalingPerson(i);
                 persons.Add(person);
             }
         });
-        return persons;
+        return persons.OrderBy(x => x.FullName).ThenBy(x => x.Email).ToList();
     }
 
     private async Task<WalingPerson> GetWalingPerson(int increment)

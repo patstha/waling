@@ -26,7 +26,14 @@ public class CreateModel : PageModel
     [DisplayName("Waling Person")]
     public string WalingPerson { get; set; } = "";
 
+
+    [BindProperty]
+    [Required]
+    [DisplayName("Waling Person")]
+    public string ModernWalingPerson { get; set; } = "";
+
     public IEnumerable<SelectListItem> WalingPersons {  get; set; } = new List<SelectListItem>();
+    public IEnumerable<SelectListItem> ModernWalingPersons {  get; set; } = new List<SelectListItem>();
 
     private readonly ILogger<CreateModel> _logger;
     private readonly IConfiguration _config;
@@ -42,6 +49,11 @@ public class CreateModel : PageModel
     {
         People = await GetUsers();
         WalingPersons = People.Select(po => new SelectListItem()
+        {
+            Text = po.FullName,
+            Value = po.Email
+        });
+        ModernWalingPersons = People.Select(po => new SelectListItem()
         {
             Text = po.FullName,
             Value = po.Email

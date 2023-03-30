@@ -38,5 +38,14 @@ namespace Waling.Pages.Program
             _logger.LogInformation("Projected date new is {projectednew}", ProjectedNew);
             return Redirect($"/Index?application={site}&projectedold={ProjectedOld}&projectednew={ProjectedNew}");
         }
+
+        public async Task<Dictionary<string, string>> GetUsers()
+        {
+            await Task.Run(() =>
+            {
+
+            });
+            return new Dictionary<string, string> { { "billg@microsoft.com", "William Henry Gates" } };
+        }
     }
 }

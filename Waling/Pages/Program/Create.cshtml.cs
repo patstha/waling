@@ -24,9 +24,9 @@ public class CreateModel : PageModel
     [BindProperty]
     [Required]
     [DisplayName("Waling Person")]
-    public string WalingPerson { get; set; }
+    public string WalingPerson { get; set; } = "";
 
-    public IEnumerable<SelectListItem> WalingPersons {  get; set; }
+    public IEnumerable<SelectListItem> WalingPersons {  get; set; } = new List<SelectListItem>();
 
     private readonly ILogger<CreateModel> _logger;
     private readonly IConfiguration _config;

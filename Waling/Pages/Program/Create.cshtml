@@ -6,6 +6,14 @@
 
 
 <form asp-action="Create" method="post">
+
+    <label class="required" asp-for="WalingPerson">Please select your favorite Waling Person</label>
+    <span asp-validation-for="WalingPerson" class="text-danger"></span>
+    <br />
+    <select id="WalingPerson" class="form-control" name="WalingPerson" asp-for="WalingPerson" asp-items="Model.WalingPersons">
+        <option selected hidden disabled>Choose an option</option>
+    </select>
+
     <label class="form-label required" for="ProjectedOld">Projected Date Old</label>
     <span asp-validation-for="ProjectedOld" class="text-danger"></span>
     <br />
@@ -17,13 +25,6 @@
     <input required type="date" class="form-control w-50" asp-for="ProjectedNew" value="@DateTime.UtcNow.Date">
     <br />
     <button class="primary mt-2 mb-2" type="submit" onclick="sayHello('avocado')'">Submit</button>
-    
-    <label class="required" asp-for="WalingPerson">Please select your favorite Waling Person</label>
-    <span asp-validation-for="WalingPerson" class="text-danger"></span>
-    <br />
-    <select id="WalingPerson" class="form-control" name="WalingPerson" asp-for="WalingPerson" asp-items="Model.WalingPersons">
-        <option selected hidden disabled>Choose an option</option>
-    </select>
 </form>
 
 @foreach (var person in Model.People)

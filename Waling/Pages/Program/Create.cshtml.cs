@@ -54,7 +54,7 @@ public class CreateModel : PageModel
         string site = publicKnowledge.GetValue<string>("ApplicationName") ?? "default name";
         _logger.LogInformation("Projected date old is {projectedold}", ProjectedOld);
         _logger.LogInformation("Projected date new is {projectednew}", ProjectedNew);
-        return Redirect($"/Index?application={site}&projectedold={ProjectedOld}&projectednew={ProjectedNew}");
+        return Redirect($"/Index?application={site}&projectedold={ProjectedOld}&projectednew={ProjectedNew}&walingperson={WalingPerson}");
     }
 
     public async Task<List<WalingPerson>> GetUsers()

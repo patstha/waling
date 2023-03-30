@@ -10,10 +10,17 @@
     <label class="required" asp-for="WalingPerson">Please select your favorite Waling Person</label>
     <span asp-validation-for="WalingPerson" class="text-danger"></span>
     <br />
-    <select id="WalingPerson" class="form-control" name="WalingPerson" asp-for="WalingPerson" asp-items="Model.WalingPersons">
+@*    <select id="WalingPerson" class="form-control" name="WalingPerson" asp-for="WalingPerson" asp-items="Model.WalingPersons">
         <option selected hidden disabled>Choose an option</option>
-    </select>
-
+    </select>*@
+    <datalist id="WalingPersons">
+        @foreach (var person in Model.WalingPersons)
+        {
+            <option value="@person.Value">@person.Text</option>
+        }
+    </datalist>
+    <input autocomplete="on" list="WalingPersons" asp-for="WalingPerson" asp-items="Model.WalingPersons" />
+    <br />
     <label class="form-label required" for="ProjectedOld">Projected Date Old</label>
     <span asp-validation-for="ProjectedOld" class="text-danger"></span>
     <br />

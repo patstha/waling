@@ -74,7 +74,7 @@ public class CreateModel : PageModel
         List<WalingPerson> persons = new();
         await Task.Run(async () =>
         {
-            for (int i = 1; i < 50000; i++)
+            for (int i = 1; i < 5000; i++)
             {
                 WalingPerson person = await GetWalingPerson(i);
                 persons.Add(person);

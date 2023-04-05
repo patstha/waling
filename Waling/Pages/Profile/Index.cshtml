@@ -21,11 +21,11 @@
                 You can reach me at my email address <a href="mailto:@person.Email">@person.Email</a>. 
                 My unique fact is @person.SomethingUnique.
                 My social security number is @person.SocialSecurityNumber. 
-                I identify as @person.Gender.ToLower() and my pronouns are 
-                @if (@person.Gender.ToLower() == "male")
+                I identify as @person.Gender and my pronouns are 
+                @if (@person.Gender == Bogus.DataSets.Name.Gender.Male)
                 {
                     <span>he/him</span>
-                } else @if (@person.Gender.ToLower() == "female")
+                } else @if (@person.Gender == Bogus.DataSets.Name.Gender.Female)
                 {
                     <span>she/her</span>
                 } else 

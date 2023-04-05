@@ -1,0 +1,28 @@
+@page
+@model Waling.Pages.Profile.IndexModel
+@{
+    ViewData["Title"] = "Our people";
+}
+
+<p>
+    This is a learning exercise. 
+    None of these people are real. 
+    They are from a library called Bogus.
+</p>
+@if (Model.People.Any())
+{
+    foreach (var person in Model.People)
+    {
+        <div class="d-flex flex row">
+            <img src="@person.Avatar" alt="A photo of @person.FirstName @person.LastName" class="img img-responsive img-thumbnail col-3" />
+            <p class="col-9">
+                Hi, everyone! I am @person.FirstName. 
+                My full name is @person.FullName. 
+                You can reach me at my email address <a href="mailto:@person.Email">@person.Email</a>. 
+                My unique fact is @person.SomethingUnique.
+                My social security number is @person.SocialSecurityNumber. 
+                I identify as @person.Gender and my pronouns are they/them.
+            </p>
+        </div>
+    }
+}

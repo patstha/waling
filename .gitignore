@@ -481,3 +481,5 @@ Waling/Properties/ServiceDependencies/**/*
 
 Waling/wwwroot/js/*.js
 Waling/wwwroot/js/*.js.map
+
+Waling/wwwroot/lib/**/*

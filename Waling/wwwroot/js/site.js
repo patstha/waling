@@ -2,8 +2,8 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-$(document).ready(function () {
-    $('.walingpersonselect').select2({
-        placeholder: 'Select your current favorite Waling person'
-    });
-});
+//$(document).ready(function () {
+//    $('.walingpersonselect').select2({
+//        placeholder: 'Select your current favorite Waling person'
+//    });
+//});

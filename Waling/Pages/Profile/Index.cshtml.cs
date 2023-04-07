@@ -27,7 +27,7 @@ public class IndexModel : PageModel
         List<WalingPerson> persons = new();
         await Task.Run(async () =>
         {
-            for (int i = 1; i < 50; i++)
+            for (int i = 1; i <= 200; i++)
             {
                 WalingPerson person = await GetWalingPerson(i);
                 persons.Add(person);

@@ -5,36 +5,18 @@
 }
 
 <p>
-    This is a learning exercise. 
-    None of these people are real. 
+    This is a learning exercise.
+    None of these people are real.
     They are from a library called Bogus.
+    There are @Model.People.Count() people on this list.
 </p>
 @if (Model.People.Any())
 {
     foreach (var person in Model.People)
     {
-        <div class="d-flex flex row">
-            <img src="@person.Avatar" alt="A photo of @person.FirstName @person.LastName" class="img img-responsive img-thumbnail col-md-3 col-sm-12" 
-                style="aspect-ratio: 1/1;"/>
-            <p class="col-md-9 col-sm-12">
-                Hi, everyone! I am @person.FirstName. 
-                My full name is @person.FullName. 
-                You can reach me at my email address <a href="mailto:@person.Email">@person.Email</a>. 
-                My unique fact is @person.SomethingUnique.
-                My social security number is @person.SocialSecurityNumber. 
-                I identify as @person.Gender and my pronouns are 
-                @if (@person.Gender == Bogus.DataSets.Name.Gender.Male)
-                {
-                    <span>he/him</span>
-                } else @if (@person.Gender == Bogus.DataSets.Name.Gender.Female)
-                {
-                    <span>she/her</span>
-                } else 
-                {
-                    <span>it/its</span>
-                }
-                .
-            </p>
+        <div class="d-flex">
+            <img class="img" src="@person.Avatar" alt="a photo of @person.FullName" style="width:128px; height:128px;">
+            <p>My name is @person.FirstName. My email is <a href="mailto:@person.Email">@person.Email</a>. My social security is @person.SocialSecurityNumber. My username is @person.UserName.</p>
         </div>
     }
 }

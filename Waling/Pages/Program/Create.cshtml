@@ -7,6 +7,7 @@
 <small><pre>Total count: @Model.WalingPersons.Count()</pre></small>
 
 <form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
     <label class="required" asp-for="SelectedWalingPersons">Please select your favorite Waling Person</label>
     <span asp-validation-for="SelectedWalingPersons" class="text-danger"></span>
     <br />
@@ -15,8 +16,9 @@
     </select>
     <input type="hidden" asp-for="HiddenWalingPersons" />
     <br />
-    <button class="primary mt-2 mb-2" type="submit" onclick="sayHello('avocado')'">Submit</button>
+    <button class="primary mt-2 mb-2" type="submit" onclick="alert('avocado')'">Submit</button>
 </form>
 
-
-<script src="~/js/multiselect-dropdown.js" defer></script>
+@section Scripts {
+    <script src="~/js/multiselect-dropdown.js" defer></script>
+}
